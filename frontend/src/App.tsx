@@ -81,20 +81,13 @@ interface ChatMessage {
 
 function App() {
   const [extractedText, setExtractedText] = useState<string | null>(null);
-  const [qualityData, setQualityData] = useState<any>(null);
+  const [_qualityData, setQualityData] = useState<any>(null);
   const [medicalAnalysis, setMedicalAnalysis] = useState<any>(null);
   const [showTextPreview, setShowTextPreview] = useState<boolean>(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [chatInput, setChatInput] = useState<string>('');
   const [isChatLoading, setIsChatLoading] = useState<boolean>(false);
   const [chatError, setChatError] = useState<string | null>(null);
-
-  const handleReset = () => {
-    setExtractedText(null);
-    setQualityData(null);
-    setMedicalAnalysis(null);
-    setShowTextPreview(false);
-  };
 
   const handleSendChat = async (e: React.FormEvent) => {
     e.preventDefault();

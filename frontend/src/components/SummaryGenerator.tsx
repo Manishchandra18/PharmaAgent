@@ -1,7 +1,7 @@
 // frontend/src/components/SummaryGenerator.tsx
 
 import { useState } from "react";
-import { Sparkles, Download, LoaderCircle, Edit3, Save, X, Eye, FileText, FileDown } from "lucide-react";
+import { Sparkles, LoaderCircle, Edit3, Eye, FileText, FileDown } from "lucide-react";
 
 interface SummaryGeneratorProps {
   context: string; // Extracted text from regulatory/clinical/pharma documents
@@ -49,7 +49,7 @@ function DocumentRenderer({ content }: { content: string }) {
     });
   };
 
-  const renderHeaderSection = (header: string, content: string, index: number) => {
+  const renderHeaderSection = (_header: string, content: string, index: number) => {
     const lines = content.split('\n').filter(line => line.trim());
     const portfolioDetails: string[] = [];
     const moleculeDetails: string[] = [];
@@ -216,7 +216,7 @@ export function SummaryGenerator({ context }: SummaryGeneratorProps) {
   const [error, setError] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [viewMode, setViewMode] = useState<'formatted' | 'raw'>('formatted');
-  const [summaryHeight, setSummaryHeight] = useState<number>(40);
+  const [summaryHeight] = useState<number>(40);
 
   const handleGenerateSummary = async () => {
     setIsLoading(true);
