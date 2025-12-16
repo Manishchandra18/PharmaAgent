@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FileUpload } from "./components/FileUpload";
 import { SummaryGenerator } from "./components/SummaryGenerator";
+import { apiUrl } from "./config";
 
 // Function to format extracted text into readable paragraphs and bullet points
 const formatExtractedText = (text: string) => {
@@ -105,7 +106,7 @@ function App() {
     setIsChatLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/chat', {
+      const response = await fetch(apiUrl('/api/v1/chat'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

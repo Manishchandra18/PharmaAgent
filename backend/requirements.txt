@@ -1,6 +1,7 @@
 # Core dependencies for FastAPI and web server
 fastapi
 uvicorn
+gunicorn
 
 # PDF processing
 pymupdf==1.24.0  # Used for PDF to image conversion for AWS Textract
@@ -8,6 +9,7 @@ pymupdf==1.24.0  # Used for PDF to image conversion for AWS Textract
 # OCR support
 pillow==10.4.0
 pytesseract==0.3.13
+python-multipart==0.0.9
 
 # Environment variable loader
 python-dotenv==1.0.0

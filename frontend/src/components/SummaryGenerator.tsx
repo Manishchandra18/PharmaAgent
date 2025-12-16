@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Sparkles, LoaderCircle, Edit3, Eye, FileText, FileDown } from "lucide-react";
+import { apiUrl } from "../config";
 
 interface SummaryGeneratorProps {
   context: string; // Extracted text from regulatory/clinical/pharma documents
@@ -226,7 +227,7 @@ export function SummaryGenerator({ context }: SummaryGeneratorProps) {
     setIsEditing(false);
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/generate-summary', {
+      const response = await fetch(apiUrl('/api/v1/generate-summary'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ context })
@@ -250,7 +251,7 @@ export function SummaryGenerator({ context }: SummaryGeneratorProps) {
     if (!contentToDownload) return;
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/download-docx', {
+      const response = await fetch(apiUrl('/api/v1/download-docx'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: contentToDownload }),

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Upload, FileText, LoaderCircle, CheckCircle, AlertCircle } from "lucide-react";
+import { apiUrl } from "../config";
 
 interface FileUploadProps {
   onTextExtracted: (text: string, qualityData?: any, medicalAnalysis?: any) => void;
@@ -56,7 +57,7 @@ export function FileUpload({ onTextExtracted }: FileUploadProps) {
         formData.append("files", file);
       });
 
-      const response = await fetch("http://localhost:8000/api/v1/upload", {
+      const response = await fetch(apiUrl("/api/v1/upload"), {
         method: "POST",
         body: formData,
       });
