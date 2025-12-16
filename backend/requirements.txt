@@ -1,0 +1,35 @@
+# Core dependencies for FastAPI and web server
+fastapi
+uvicorn
+
+# PDF processing
+pymupdf==1.24.0  # Used for PDF to image conversion for AWS Textract
+
+# OCR support
+pillow==10.4.0
+pytesseract==0.3.13
+
+# Environment variable loader
+python-dotenv==1.0.0
+
+# Tokenization
+tiktoken==0.4.0
+
+# LangChain packages for Perplexity integration
+langchain-perplexity==0.1.2
+langchain-core==0.3.74
+
+# Pydantic for data validation
+pydantic==2.11.7
+
+# Type hints support
+typing-extensions==4.7.1
+
+
+
+# DOCX generation
+python-docx==1.1.0
+
+# AWS services
+boto3==1.40.25
+# AWS Medical Comprehend is included in boto3
