@@ -154,14 +154,14 @@ function App() {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-4">
                 <div className="text-2xl font-bold text-gray-800">
-                  Medical AI Assistant
+                  Pharma Innovation Agent
                 </div>
               </div>
               <div className="border-l border-gray-300 h-12"></div>
             </div>
             <div className="text-right">
-              <div className="text-gray-600 font-semibold">AI-Powered Medical Assistant</div>
-              <div className="text-gray-500 text-sm">Advanced clinical document intelligence</div>
+              <div className="text-gray-600 font-semibold">AI‑Powered Pharma Assistant</div>
+              <div className="text-gray-500 text-sm">Advanced Pharma Research Document Intelligence</div>
             </div>
           </div>
         </div>
@@ -171,10 +171,10 @@ function App() {
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Medical AI Assistant
+            Pharma Innovation Agent
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Upload patient reports to generate professional medical summaries using advanced AI models.
+            Upload molecule-related documents to generate professional medical summaries using advanced AI models.
           </p>
         </div>
 
@@ -306,7 +306,7 @@ function App() {
                   Chat with the Medical AI Assistant
                 </h2>
                 <p className="text-sm text-gray-600">
-                  Ask questions about medical terminology, reports, and summaries. This tool does not replace professional medical advice.
+                  Ask questions about Pharma terminology, reports, and summaries. This tool does not replace professional medical advice.
                 </p>
               </div>
             </div>
@@ -321,7 +321,7 @@ function App() {
               <div className="max-h-80 overflow-y-auto space-y-3 pr-1">
                 {chatMessages.length === 0 ? (
                   <p className="text-sm text-gray-500">
-                    Start the conversation by asking a question, for example: &quot;Help me interpret a lab report with elevated liver enzymes.&quot;
+                    Start the conversation by asking a question, for example: &quot;Help me analyze a molecule opportunity with elevated liver enzymes.&quot;
                   </p>
                 ) : (
                   chatMessages.map((message, index) => (
@@ -379,9 +379,9 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-red-400 font-semibold mb-4">About</h3>
-              <p className="text-gray-300 mb-2">AI-Powered Medical Assistant</p>
-              <p className="text-gray-300 mb-2">Automated Medical Summary Generation</p>
-              <p className="text-gray-300">Document Processing & Analysis</p>
+              <p className="text-gray-300 mb-2">AI‑Powered Pharma Assistant</p>
+              <p className="text-gray-300 mb-2">Automated Molecule Opportunity Summary Generation</p>
+              <p className="text-gray-300">Multi‑source Pharma Document Processing</p>
             </div>
             <div>
               <h3 className="text-red-400 font-semibold mb-4">Features</h3>

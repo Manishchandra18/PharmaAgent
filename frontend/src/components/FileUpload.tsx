@@ -86,8 +86,8 @@ export function FileUpload({ onTextExtracted }: FileUploadProps) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Upload Medical Reports</h2>
-        <p className="text-gray-600">Upload PDF files to extract patient information</p>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Upload Drug Reports</h2>
+        <p className="text-gray-600">Upload PDF files to extract Drug information</p>
       </div>
 
       {/* Upload Area */}

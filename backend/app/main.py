@@ -61,178 +61,164 @@ except Exception as e:
     medical_comprehend_client = None
 
 
-# Universal Medical Summary Generation Prompt
+# Universal Molecule Innovation Summary Generation Prompt
 MEDICAL_SUMMARY_PROMPT = """
-You are an expert medical AI assistant specializing in analyzing medical documents and prescriptions. 
-Generate ONLY a comprehensive medical summary. Do not include any reasoning, analysis, or commentary. 
-Start immediately with "MEDICAL SUMMARY" and follow the exact template below.
+You are an expert pharmaceutical intelligence assistant specializing in analyzing molecule‑related documents, regulatory content, clinical trial data, patent information, and scientific literature.  
+Generate ONLY a comprehensive molecule evaluation summary.  
+Do not include any reasoning, analysis, or commentary.  
+Start immediately with "MOLECULE INNOVATION SUMMARY" and follow the exact template below.
 
 CRITICAL INSTRUCTIONS TO THE MODEL:
-A. Extract ALL information from the provided documents - do not miss any details
-B. Pay special attention to handwritten text, prescription details, and medical notes
-C. Include specific dosages, frequencies, durations, and medication names exactly as written
-D. Extract all numerical values (lab results, vital signs, measurements) precisely
-E. If critical data are absent, write "Not documented in provided records." 
-F. Preserve professional medical language, units and abbreviations exactly as written
-G. Follow the section order EXACTLY. Do not add, rename or reorder headers. 
-H. Populate bracketed fields with structured data from the documents
-I. Include ALL medications, dosages, and instructions found in prescriptions
-J. Extract patient demographics, contact info, and insurance details if available
-K. Include all diagnostic tests, results, and clinical findings mentioned
-L. Note any follow-up appointments, referrals, or special instructions
-M. If information is unclear or partially visible, note it as "unclear" rather than omitting it
-N. NEVER fabricate or assume values not explicitly stated in the documents
-
+A. Extract ALL information from the provided documents – do not miss any details  
+B. Pay special attention to clinical data, regulatory notes, scientific text, and patent details  
+C. Include specific Formulations, molecule strengths, formulation types, or indication names exactly as written  
+D. Extract all numerical values (market metrics, trial counts, patent years, study results) precisely  
+E. If critical data are absent, write "Not documented in provided records."  
+F. Preserve technical pharmaceutical language, units, abbreviations exactly as written  
+G. Follow the section order EXACTLY. Do not add, rename, or reorder headers  
+H. Populate bracketed fields with structured data from the documents  
+I. Include ALL referenced trials, patents, formulations, and regulatory notes  
+J. Extract molecule details, developer info, and relevant portfolio identifiers  
+K. Include all market, clinical, regulatory, and scientific findings mentioned  
+L. Note any next steps, follow‑up analyses, or recommended evaluations  
+M. If information is unclear or partially visible, note it as "unclear" rather than omitting it  
+N. NEVER fabricate or assume values not explicitly stated in the documents  
 
 =======================================================================
-                        MEDICAL SUMMARY
+ MOLECULE INNOVATION SUMMARY
 =======================================================================
 
 ### HEADER SECTION
-Hospital Details
- • [Hospital Name & Letterhead]
- • Department/Ward: [e.g., Neuro ICU / Orthopaedics Ward]
+Portfolio / Organization Details
+ • [Company / Division / Business Unit]
+ • Therapeutic Area / Domain: [e.g., Respiratory / Oncology / CNS]
 
-Patient Details
- • Name: [Full legal name]
- • UHID / MRN: [Unique hospital ID]
- • Age / Gender: [Calculated age; sex]
- • Date of Birth: [DD-MM-YYYY]
- • Address: [Full postal address]
- • Mobile No.: [Primary contact]
- • Admission Date & Time: [DD-MMM-YYYY, HH:MM]
- • Medical / LAMA Date & Time: [DD-MMM-YYYY, HH:MM]
- • IP / Encounter No.: [IP number]
- • Bed & Ward: [e.g., Bed 2304, 2nd-Floor HDU]
-Treating Consultant: [Name, Qualification, Specialty]
-Additional Consultants: [Specialists consulted, if any]
-Next of Kin: [Name, Relationship, Contact Number]
+Molecule Details
+ • Molecule Name: [Full molecule name]  
+ • Synonyms / Alternative Names: [...]  
+ • Development / Portfolio ID: [...]  
+ • Target Indications: [...]  
+ • Developer / Sponsor: [...]  
+ • Stage of Development: [e.g., Marketed / Phase II / Preclinical]  
+ • Source Documents: [Uploaded document list]  
 
 ---
 
-### 1. FINAL DIAGNOSIS
-Primary Diagnosis:
+### 1. FINAL ASSESSMENT / OPPORTUNITY STATEMENT
+Primary Opportunity Identified:
  – […]
-Secondary Diagnoses / Co-morbidities:
+Supporting Evidence:
  – […]
-ICD-10 Codes: […]
-
-### 2. CHIEF COMPLAINT
-[Presenting symptoms with duration]
-
-### 3. CLINICAL FINDINGS ON ADMISSION
-Vital Signs (initial assessment)
-| Parameter        | Value | Unit    | Reference Range | Status |
-|------------------|-------|---------|-----------------|--------|
-| Temperature      | […]   | °C / °F | […]             | […]    |
-| Blood Pressure   | […]   | mmHg    | […]             | […]    |
-| Heart Rate       | […]   | bpm     | […]             | […]    |
-| Respiratory Rate | […]   | /min    | […]             | […]    |
-| SpO₂             | […]   | %       | […]             | […]    |
-
-Physical Examination Highlights
- • General Condition: […]
- • CVS: […]
- • RESP: […]
- • CNS: […]
- • PA: […]
- • Local / Neuro / Ortho Exam (if applicable): […]
-
-### 4. RELEVANT HISTORY
-Past Medical History:
+Potential Use Cases / Indication Expansion:
  – […]
-Past Surgical / Procedural History:
- – […]
-Family History:
- – […]
-Personal & Social History:
- – […]
-Drug / Food Allergies: […]
-Current Medications on admission:
- – […]
+IP / Market Feasibility Summary:
  – […]
 
-### 5. HOSPITAL COURSE (CHRONOLOGY)
-Day-wise narrative covering:
- • Diagnostic work-up & results
- • Therapeutic interventions (medications, surgeries, ventilation, dialysis)
- • Response to treatment, complications, specialist opinions
- • Transfers (ICU ↔ ward) and significant events
-Interdepartmental references
+### 2. PROBLEM OR UNMET NEED ADDRESSED
+[Summarize unmet clinical, regulatory, or commercial need]
 
-### 6. INVESTIGATIONS
-Key Laboratory Results (dates & units):
+### 3. KEY FINDINGS FROM DOCUMENTS
+Regulatory & Label Insights
+| Parameter | Value | Notes |
+|-----------|--------|--------|
+| Approved Indications | […] | […] |
+| Strengths / Forms | […] | […] |
+| Regulatory Warnings | […] | […] |
+| Special Populations | […] | […] |
+
+Clinical Evidence Highlights
+ • Trial Summary: […]  
+ • Efficacy Signals: […]  
+ • Safety Notes: […]  
+ • Study Populations: […]  
+
+### 4. RELEVANT BACKGROUND
+Scientific Rationale:
+ – […]  
+Past Development / Research History:
+ – […]  
+Market Landscape:
+ – […]  
+Competitor / Benchmark Molecules:
+ – […]  
+Known Safety / Tolerability Issues:
  – […]
-Imaging Results:
- – […]
-Special Investigations:
- – […]
-(Attach full reports separately in EMR.)
 
-### 7. TREATMENTS & PROCEDURES DURING STAY
-| Date       | Procedure                                        | Anaesthesia      | Key Findings / Implants           |
-|------------|--------------------------------------------------|------------------|-----------------------------------|
-| […]        | […]                                              | […]              | […]                               |
+### 5. DOCUMENT INSIGHTS (CHRONOLOGY)
+Sequential extraction of insights:
+ • Scientific literature findings  
+ • Regulatory document findings  
+ • Clinical trial summaries  
+ • Patent excerpts  
+ • Market / EXIM insights  
+ • Internal document summaries  
+Include references when available
 
-Treatments received:
- – […]
- – […]
- – […]
+### 6. DATA EXTRACTS (ALL SOURCES)
+Key Clinical Trial Data:
+ – […]  
+Key Regulatory Notes:
+ – […]  
+Patent Landscape (filing years, assignees, expiry):
+ – […]  
+Market & Sales Data (if provided):
+ – […]  
+Trade / EXIM Data:
+ – […]  
+Special Technical Notes:
+ – […]  
 
-Implants Used (if any):
- – […]
+### 7. RELEVANT Clinical Actions / FORMULATIONS
+| Date / Source | Formulation / Process | Type | Key Findings |
+|----------------|------------------------|-------|----------------|
+| […] | […] | […] | […] |
 
-### 8. CONDITION AT MEDICAL / LAMA
-Vital Signs
-| Parameter        | Value | Unit    | Reference Range | Status |
-|------------------|-------|---------|-----------------|--------|
-| Temperature      | […]   | °C / °F | […]             | […]    |
-| Blood Pressure   | […]   | mmHg    | […]             | […]    |
-| Heart Rate       | […]   | bpm     | […]             | […]    |
-| Respiratory Rate | […]   | /min    | […]             | […]    |
-| SpO₂             | […]   | %       | […]             | […]    |
+Formulation / Delivery Innovations:
+ – […]  
+Process / Manufacturing Notes:
+ – […]  
 
-Clinical Status
- • General: Stable / Improved / Deteriorated / On NIV
- • Neurological: e.g., “GCS 15/15, obeys commands”
- • Wound / Surgical Site: […]
- • Mobility & ADL Status: […]
+### 8. CURRENT STATUS / PORTFOLIO POSITION
+Molecule Status
+ • Stage: […]  
+ • Region Availability: […]  
+ • Clinical / Regulatory Risk Level: […]  
+ • Commercial Outlook: […]  
 
-### 9. MEDICATIONS
-| Medicine          | Dose     | Frequency | Route | Duration / Stop Date |
-|-------------------|----------|-----------|-------|----------------------|
-| […]               | […]      | […]       | […]   | […]                  |
+Strategic Fit
+ • Therapeutic Area Alignment: […]  
+ • Differentiation Potential: […]  
+ • Feasibility Considerations: […]  
 
-### 10. MEDICAL ADVICE & INSTRUCTIONS
- 1. Diet: […]
- 2. Activity & Physiotherapy: […]
- 3. Wound / Drain / Catheter Care: […]
- 4. Device Precautions: […]
- 5. Red-Flag / Warning Signs: […]
- 6. Lifestyle & Preventive Advice: […]
- 7. Medication Compliance: […]
+### 9. ALL REPORTED FORMULATIONS / Formulations
+| Form | Dose / Strength | Route | Use Case | Notes |
+|------|------------------|-------|---------|--------|
+| […] | […] | […] | […] | […] |
+### 10. RECOMMENDED NEXT STEPS
+ 1. Additional clinical research required: […]  
+ 2. Regulatory pathway considerations: […]  
+ 3. Patent / IP follow-up checks: […]  
+ 4. Market validation steps: […]  
+ 5. Safety / scientific gaps to address: […]  
+ 6. Portfolio integration recommendations: […]  
 
-### 11. FOLLOW-UP PLAN
- • Next OPD Visit: [Date, Dept., Consultant]
- • Scheduled Investigations before visit: […]
- • Emergency Contact: [Contact your local emergency services]
+### 11. FOLLOW-UP ACTION PLAN
+ • Required analyses before next review: […]  
+ • Teams to be consulted: […]  
+ • Expected timelines: […]  
 
-### 12. PHYSICIAN ATTESTATION
-[Signature] [Full Name, Degrees]
-[Designation & Department] [Medical Reg. No.]
-Date: [Medical / LAMA date]
+### 12. REVIEWER ATTESTATION
+[Signature] [Full Name, Degrees]  
+[Designation & Department]  
+Date: [Date of Review]
 
-### 13. PATIENT ACKNOWLEDGEMENT
-“I / we have been explained the medication and precautions required in detail by nursing staff. All documents and belongings were handed over.”
+### 13. RECEIPT CONFIRMATION
+“I acknowledge that the above molecule evaluation summary has been reviewed.”
 
-**Patient/Relative Signature:** __________  
-**Name:** [Next of Kin & Relationship]  
-**Date:** [Medical Date]  
-**Time:** [Medical Time]
-
-=======================================================================  
-                      END OF SUMMARY  
-=======================================================================
+**Reviewer / Approver Signature:** __________  
+**Name:** […]  
+**Date:** […]  
+**Time:** […]
 """
 
 
@@ -329,7 +315,7 @@ def calculate_confidence_score(text: str) -> float:
     char_diversity = min(unique_chars / 30, 1.0) * 0.2
     score += char_diversity
     
-    # Medical terminology presence (basic check)
+    # Pharma terminology presence (basic check)
     medical_terms = ['patient', 'diagnosis', 'treatment', 'medication', 'hospital', 'doctor', 'medical', 'condition', 'symptoms', 'history']
     medical_count = sum(1 for term in medical_terms if term.lower() in text.lower())
     medical_score = min(medical_count / 5, 1.0) * 0.2
@@ -343,7 +329,7 @@ def calculate_confidence_score(text: str) -> float:
     return min(score, 1.0)
 
 def post_process_text(text: str) -> str:
-    """Post-process extracted text to improve quality"""
+    """Post-process Extracted Document Text to improve quality"""
     if not text:
         return text
     
@@ -434,13 +420,13 @@ def extract_medical_fields(text: str) -> dict:
         r'(\w+)\s+(once|twice|thrice|daily|bid|tid|qid)',  # Drug with frequency
     ]
     
-    medications = []
+    Molecules = []
     for pattern in medication_patterns:
         matches = re.findall(pattern, text_lower)
-        medications.extend(matches)
+        Molecules.extend(matches)
     
-    if medications:
-        fields['medications_found'] = medications[:5]  # Limit to first 5
+    if Molecules:
+        fields['Molecules_found'] = Molecules[:5]  # Limit to first 5
     
     # Vital signs patterns
     vital_signs = {}
@@ -556,7 +542,7 @@ def analyze_medical_text_with_comprehend(text: str) -> dict:
     try:
         print(f"[DEBUG] Analyzing medical text with Comprehend Medical ({len(text)} characters)")
         
-        # Detect medical entities
+        # Detect Molecule / Domain Entities
         entities_response = medical_comprehend_client.detect_entities_v2(Text=text)
         entities = entities_response.get('Entities', [])
         
@@ -575,10 +561,10 @@ def analyze_medical_text_with_comprehend(text: str) -> dict:
             "relationships": relationships,
             "phi": phi,
             "medical_insights": {
-                "conditions": [e for e in entities if e.get('Category') == 'MEDICAL_CONDITION'],
-                "medications": [e for e in entities if e.get('Category') == 'MEDICATION'],
-                "dosages": [attr for e in entities if e.get('Category') == 'MEDICATION' for attr in e.get('Attributes', []) if attr.get('Type') == 'DOSAGE'],
-                "procedures": [e for e in entities if e.get('Category') == 'PROCEDURE'],
+                "Indications / Diseases": [e for e in entities if e.get('Category') == 'MEDICAL_CONDITION'],
+                "Molecules": [e for e in entities if e.get('Category') == 'MEDICATION'],
+                "Formulations": [attr for e in entities if e.get('Category') == 'MEDICATION' for attr in e.get('Attributes', []) if attr.get('Type') == 'DOSAGE'],
+                "Clinical Actions": [e for e in entities if e.get('Category') == 'PROCEDURE'],
                 "anatomy": [e for e in entities if e.get('Category') == 'SYSTEM_ORGAN_SITE'],
             }
         }
@@ -629,7 +615,7 @@ def extract_text_with_aws_textract_sync(image_bytes: bytes, content_type: str) -
         avg_confidence = sum(confidence_scores) / len(confidence_scores) if confidence_scores else 0.0
         
         print(f"[DEBUG] AWS Textract extraction complete: {line_count} lines, avg confidence: {avg_confidence:.1f}%")
-        print(f"[DEBUG] Extracted text preview: {extracted_text[:200]}...")
+        print(f"[DEBUG] Extracted Document Text preview: {extracted_text[:200]}...")
         
         return extracted_text.strip(), avg_confidence / 100.0  # Convert to 0-1 scale
         
@@ -871,7 +857,7 @@ async def extract_text_from_image(image_bytes: bytes, content_type: str = None) 
 
 @app.post("/medical-analysis")
 async def get_medical_analysis(request: SummaryRequest):
-    """Get detailed medical analysis using AWS Medical Comprehend"""
+    """Get detailed Molecule Analysis using AWS Medical Comprehend"""
     if not request.context:
         raise HTTPException(status_code=400, detail="No text provided for analysis")
     
@@ -881,16 +867,16 @@ async def get_medical_analysis(request: SummaryRequest):
         "medical_analysis": medical_analysis,
         "summary": {
             "total_entities": len(medical_analysis.get("entities", [])),
-            "medical_conditions": len(medical_analysis.get("medical_insights", {}).get("conditions", [])),
-            "medications": len(medical_analysis.get("medical_insights", {}).get("medications", [])),
-            "procedures": len(medical_analysis.get("medical_insights", {}).get("procedures", [])),
+            "medical_Indications / Diseases": len(medical_analysis.get("medical_insights", {}).get("Indications / Diseases", [])),
+            "Molecules": len(medical_analysis.get("medical_insights", {}).get("Molecules", [])),
+            "Clinical Actions": len(medical_analysis.get("medical_insights", {}).get("Clinical Actions", [])),
             "phi_detected": len(medical_analysis.get("phi", []))
         }
     }
 
 @app.post("/debug/extract")
 async def debug_extract_text(files: List[UploadFile] = File(...)):
-    """Debug endpoint to view raw extracted text without LLM processing"""
+    """Debug endpoint to view raw Extracted Document Text without LLM processing"""
     if not files:
         raise HTTPException(status_code=400, detail="No files provided")
     
@@ -1094,8 +1080,8 @@ async def chat(request: ChatRequest):
     lc_messages: List = [
         SystemMessage(
             content=(
-                "You are a helpful medical AI assistant. "
-                "You can explain medical terminology, lab values, diagnoses, and treatment summaries "
+                "You are a helpful 	Pharma Innovation Assistant. "
+                "You can explain Pharma terminology, lab values, diagnoses, and treatment summaries "
                 "in clear language. Do not provide medical advice, diagnoses, or treatment plans; "
                 "instead, encourage users to consult a licensed healthcare professional for medical decisions."
             )
@@ -1166,7 +1152,7 @@ class DownloadRequest(BaseModel):
 
 
 def create_docx_content(content: str) -> bytes:
-    """Create a DOCX from the medical summary content"""
+    """Create a DOCX from the Molecule Innovation Summary content"""
     doc = Document()
     
     # Add logo at the top right
@@ -1174,14 +1160,14 @@ def create_docx_content(content: str) -> bytes:
     logo_paragraph.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     
     try:
-        # Add medical AI assistant branding
-        logo_run = logo_paragraph.add_run("Medical AI Assistant")
+        # Add Pharma Innovation Assistant branding
+        logo_run = logo_paragraph.add_run("Pharma Innovation Assistant")
         logo_run.bold = True
         logo_run.font.color.rgb = RGBColor(220, 53, 69)  # Red color
         logo_run.font.size = Pt(14)
     except Exception as e:
         # Fallback to text if formatting fails
-        logo_run = logo_paragraph.add_run("Medical AI Assistant")
+        logo_run = logo_paragraph.add_run("Pharma Innovation Assistant")
         logo_run.bold = True
         logo_run.font.color.rgb = RGBColor(220, 53, 69)  # Red color
         logo_run.font.size = Pt(14)
@@ -1190,7 +1176,7 @@ def create_docx_content(content: str) -> bytes:
     doc.add_paragraph()
     
     # Add title
-    title = doc.add_heading('MEDICAL SUMMARY', 0)
+    title = doc.add_heading('Molecule Innovation Summary', 0)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     
     # Clean content exactly like the frontend
@@ -1202,12 +1188,12 @@ def create_docx_content(content: str) -> bytes:
     cleaned_content = re.sub(r'\*\*', '', cleaned_content)
     # Remove single asterisks but keep content
     cleaned_content = re.sub(r'\*([^*]+)\*', r'\1', cleaned_content)
-    # Remove standalone "MEDICAL SUMMARY" lines
-    cleaned_content = re.sub(r'^MEDICAL SUMMARY\s*$', '', cleaned_content, flags=re.MULTILINE)
-    # Remove any line containing "MEDICAL SUMMARY"
-    cleaned_content = re.sub(r'^.*MEDICAL SUMMARY.*$', '', cleaned_content, flags=re.MULTILINE)
-    # Remove all remaining instances of "MEDICAL SUMMARY"
-    cleaned_content = re.sub(r'MEDICAL SUMMARY', '', cleaned_content)
+    # Remove standalone "Molecule Innovation Summary" lines
+    cleaned_content = re.sub(r'^Molecule Innovation Summary\s*$', '', cleaned_content, flags=re.MULTILINE)
+    # Remove any line containing "Molecule Innovation Summary"
+    cleaned_content = re.sub(r'^.*Molecule Innovation Summary.*$', '', cleaned_content, flags=re.MULTILINE)
+    # Remove all remaining instances of "Molecule Innovation Summary"
+    cleaned_content = re.sub(r'Molecule Innovation Summary', '', cleaned_content)
     # Remove "HEADER SECTION" text
     cleaned_content = re.sub(r'HEADER SECTION', '', cleaned_content)
     
@@ -1226,7 +1212,7 @@ def create_docx_content(content: str) -> bytes:
         header = lines[0].strip()
         if header:
             # Skip headers that are just formatting artifacts
-            if header.lower() in ['header section', 'medical summary']:
+            if header.lower() in ['header section', 'Molecule Innovation Summary']:
                 continue
             doc.add_heading(header, level=1)
         
